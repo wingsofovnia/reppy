@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.wingsofovnia</groupId>
+    <artifactId>reppy-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Reppy Repository API</name>
+
+    <properties>
+        <!-- Maven and JAVAC depended properties -->
+        <project.build.jdk.ver>1.8</project.build.jdk.ver>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>${project.build.jdk.ver}</maven.compiler.target>
+        <maven.compiler.source>${project.build.jdk.ver}</maven.compiler.source>
+        <maven.compiler.testTarget>${project.build.jdk.ver}</maven.compiler.testTarget>
+        <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
+    </properties>
+
+    <modules>
+        <module>reppy-api</module>
+    </modules>
+</project>
