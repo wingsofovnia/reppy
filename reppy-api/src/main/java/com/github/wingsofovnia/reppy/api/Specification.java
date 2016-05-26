@@ -7,25 +7,7 @@ import java.util.stream.Stream;
 
 public interface Specification {
     enum Operator {
-        eq("="),
-        ne("!="),
-        le("<="),
-        lt("<"),
-        ge(">="),
-        gt(">"),
-        between("between"),
-        in("in"),
-        like("like");
-
-        private String value;
-
-        Operator(String operator) {
-            this.value = operator;
-        }
-
-        public String getValue() {
-            return value;
-        }
+        eq, ne, le, lt, ge, gt, between, in, like
     }
 
     class Criteria {

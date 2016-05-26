@@ -8,7 +8,7 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Reppy Repository API</name>
+    <name>reppy</name>
 
     <properties>
         <!-- Maven and JAVAC depended properties -->
@@ -18,9 +18,34 @@
         <maven.compiler.source>${project.build.jdk.ver}</maven.compiler.source>
         <maven.compiler.testTarget>${project.build.jdk.ver}</maven.compiler.testTarget>
         <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
+
+        <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
+        <dep.hibernate.core.ver>5.1.0.Final</dep.hibernate.core.ver>
+        <dep.hibernate.java8.ver>5.1.0.Final</dep.hibernate.java8.ver>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${dep.hibernate.api.persistence.ver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${dep.hibernate.core.ver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-java8</artifactId>
+                <version>${dep.hibernate.java8.ver}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>reppy-api</module>
+        <module>reppy-jpa-hibernate</module>
     </modules>
 </project>
