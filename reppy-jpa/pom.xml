@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.wingsofovnia</groupId>
-            <artifactId>reppy-api</artifactId>
+            <artifactId>reppy-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

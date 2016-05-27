@@ -33,7 +33,7 @@
     </dependencyManagement>
 
     <modules>
-        <module>reppy-api</module>
+        <module>reppy-core</module>
         <module>reppy-jpa</module>
     </modules>
 </project>

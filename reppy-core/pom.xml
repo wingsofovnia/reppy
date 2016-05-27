@@ -8,7 +8,7 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>reppy-api</artifactId>
+    <artifactId>reppy-core</artifactId>
     <packaging>jar</packaging>
 
     <name>reppy-api</name>

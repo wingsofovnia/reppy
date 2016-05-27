@@ -12,6 +12,8 @@ import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -32,7 +34,8 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
 
     public JpaRepository(EntityManager entityManager) {
         this.entityManager = Objects.requireNonNull(entityManager);
-        this.entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+                .getActualTypeArguments()[0];
     }
 
     @Override
@@ -65,7 +68,8 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
     public void remove(T subject) {
         Objects.requireNonNull(subject, "Unable to remove null object");
         try {
-            entityManager.remove(entityManager.contains(subject) ? subject : entityManager.merge(subject));
+            entityManager.remove(entityManager.contains(subject) ? subject :
+                    entityManager.merge(subject));
 
             setChanged();
             notifyObservers();
@@ -98,7 +102,8 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
         Objects.requireNonNull(subject, "Repository is not suitable for null objects");
 
         final EntityType<T> entityType = entityManager.getMetamodel().entity(entityClass);
-        final Set<SingularAttribute<? super T, ?>> singularAttributes = entityType.getSingularAttributes();
+        final Set<SingularAttribute<? super T, ?>> singularAttributes =
+                entityType.getSingularAttributes();
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
@@ -109,7 +114,8 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
                 if (attr.getPersistentAttributeType() == Attribute.PersistentAttributeType.BASIC) {
                     final Field field = (Field) attr.getJavaMember();
                     field.setAccessible(true);
-                    criteriaQuery.where(criteriaBuilder.equal(selectTable.get(attr), field.get(subject)));
+                    criteriaQuery.where(criteriaBuilder
+                            .equal(selectTable.get(attr), field.get(subject)));
                 }
             } catch (IllegalAccessException e) {
                 throw new RepositoryException(e);
@@ -153,7 +159,9 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
             setChanged();
             notifyObservers();
         } catch (Exception e) {
-            throw new RepositoryException("Failed to clear repository of " + entityClass.getCanonicalName() + " objects.", e);
+            throw new RepositoryException(
+                    "Failed to clear repository of " + entityClass.getCanonicalName() + " objects.",
+                    e);
         }
     }
 
@@ -181,8 +189,7 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
         @Override
         public boolean hasNext() {
             boolean hasNextIndex = pageIndex * ROWS_PER_PAGE + (pageIndex + 1) < totalRows;
-            if (!hasNextIndex)
-                deleteObserver(this);
+            if (!hasNextIndex) deleteObserver(this);
 
             return hasNextIndex;
         }
@@ -193,8 +200,7 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
         }
 
         private List<E> getCurrentPage() {
-            if (this.page != null && page.size() < pageRowIndex)
-                return this.page;
+            if (this.page != null && page.size() < pageRowIndex) return this.page;
 
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(entityClass);
@@ -216,5 +222,12 @@ public class JpaRepository<T> extends Observable implements Repository<T> {
         public void update(Observable o, Object arg) {
             throw new ConcurrentModificationException();
         }
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return Spliterators.spliterator(iterator(), size(),
+                Spliterator.ORDERED | Spliterator.DISTINCT | Spliterator.IMMUTABLE |
+                        Spliterator.NONNULL | Spliterator.SIZED);
     }
 }
