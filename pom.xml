@@ -20,8 +20,6 @@
         <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
 
         <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
-        <dep.hibernate.core.ver>5.1.0.Final</dep.hibernate.core.ver>
-        <dep.hibernate.java8.ver>5.1.0.Final</dep.hibernate.java8.ver>
     </properties>
 
     <dependencyManagement>
@@ -31,21 +29,11 @@
                 <artifactId>hibernate-jpa-2.1-api</artifactId>
                 <version>${dep.hibernate.api.persistence.ver}</version>
             </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${dep.hibernate.core.ver}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-java8</artifactId>
-                <version>${dep.hibernate.java8.ver}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
         <module>reppy-api</module>
-        <module>reppy-jpa-hibernate</module>
+        <module>reppy-jpa</module>
     </modules>
 </project>

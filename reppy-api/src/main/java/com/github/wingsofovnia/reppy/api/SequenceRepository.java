@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 public interface SequenceRepository<T, ID extends Serializable> extends Repository<T> {
     Optional<T> get(ID index);
 
-    Optional<T> get(Specification specification);
+    Optional<T> get(Specification<T> specification);
 
-    Stream<T> getAll(Specification specification);
+    Stream<T> getAll(Specification<T> specification);
 
     boolean remove(ID index);
 

@@ -14,7 +14,7 @@ public interface Repository<T> extends Iterable<T> {
         addAll(subjects.stream());
     }
 
-    boolean remove(T subject);
+    void remove(T subject);
 
     int removeAll(Stream<T> subjects);
 
