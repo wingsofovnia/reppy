@@ -8,7 +8,9 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>reppy</name>
+    <name>reppy-root</name>
+    <url>https://github.com/code4ua/reppy</url>
+    <description>Reppy - Simple Implementation of Repository Pattern</description>
 
     <properties>
         <!-- Maven and JAVAC depended properties -->
@@ -21,6 +23,45 @@
 
         <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>wingsofovnia</id>
+            <name>Illia Ovchynnikov</name>
+            <email>illia.ovchynnikov@gmail.com</email>
+            <url>https://www.linkedin.com/in/iovchynnikov</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>UTC</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:http://github.com/wingsofovnia/reppy.git</connection>
+        <developerConnection>scm:git:git@github.com:wingsofovnia/reppy.git</developerConnection>
+        <url>http://github.com/wingsofovnia/reppy</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/wingsofovnia/reppy/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/wingsofovnia/reppy</url>
+    </ciManagement>
 
     <dependencyManagement>
         <dependencies>

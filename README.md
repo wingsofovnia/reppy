@@ -1,4 +1,4 @@
-# Reppy
+# Reppy - Simple Implementation of Repository Pattern
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/wingsofovnia/reppy/issues).
