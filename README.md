@@ -1,4 +1,5 @@
-# Reppy - Simple Repository Pattern Implementation
+# Reppy <img src="https://travis-ci.org/wingsofovnia/reppy.svg?branch=develop"> <img src="https://codecov.io/gh/wingsofovnia/reppy/branch/develop/graph/badge.svg" alt="Codecov" />
+Reppy is a simple repository pattern implementation.
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/wingsofovnia/reppy/issues).
