@@ -22,6 +22,8 @@
         <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
 
         <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
+        <dev.hibernate.core>4.3.5.Final</dev.hibernate.core>
+        <dev.hibernate.entitymanager>4.3.5.Final</dev.hibernate.entitymanager>
         <dep.testing.junit.ver>4.12</dep.testing.junit.ver>
         <dep.testing.h2database.ver>1.4.192</dep.testing.h2database.ver>
     </properties>
@@ -82,6 +84,18 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${dep.testing.h2database.ver}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${dev.hibernate.core}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${dev.hibernate.entitymanager}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
