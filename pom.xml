@@ -22,8 +22,8 @@
         <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
 
         <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
-        <dep.testing.mockito.core.ver>1.10.19</dep.testing.mockito.core.ver>
-        <testing.junit.ver>4.12</testing.junit.ver>
+        <dep.testing.junit.ver>4.12</dep.testing.junit.ver>
+        <dep.testing.h2database.ver>1.4.192</dep.testing.h2database.ver>
     </properties>
 
     <licenses>
@@ -75,13 +75,13 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>${testing.junit.ver}</version>
+                <version>${dep.testing.junit.ver}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${dep.testing.mockito.core.ver}</version>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${dep.testing.h2database.ver}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -100,10 +100,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
         </dependency>
     </dependencies>
 </project>

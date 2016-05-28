@@ -1,7 +1,6 @@
 package com.github.wingsofovnia.reppy;
 
 import com.github.wingsofovnia.reppy.api.SequenceRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 

@@ -11,6 +11,8 @@ public interface SequenceRepository<T, ID extends Serializable> extends Reposito
 
     Optional<T> get(Specification<T> specification);
 
+    Stream<T> getAll();
+
     Stream<T> getAll(Specification<T> specification);
 
     void remove(ID index);
