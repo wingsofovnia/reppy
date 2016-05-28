@@ -1,5 +1,6 @@
 package com.github.wingsofovnia.reppy;
 
+import com.github.wingsofovnia.reppy.api.RepositoryException;
 import com.github.wingsofovnia.reppy.api.SequenceRepository;
 import com.github.wingsofovnia.reppy.api.Specification;
 
@@ -14,8 +15,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-public class JpaSequenceRepository<T, ID extends Serializable> extends JpaRepository<T>
-        implements SequenceRepository<T, ID> {
+public class JpaSequenceRepository<T, ID extends Serializable> extends JpaRepository<T> implements
+        SequenceRepository<T, ID> {
 
     public JpaSequenceRepository(EntityManager entityManager) {
         super(entityManager);
@@ -47,14 +48,14 @@ public class JpaSequenceRepository<T, ID extends Serializable> extends JpaReposi
     }
 
     @Override
-    public boolean remove(ID index) {
+    public void remove(ID index) {
         Objects.requireNonNull(index, "Cannot delete object by null index");
 
         Optional<T> objOpt = get(index);
-        if (!objOpt.isPresent())
-            return false;
+        if (!objOpt.isPresent()) throw new RepositoryException(
+                "Failed to find object by id #" + index.toString() + " while deletion");
         T obj = objOpt.get();
 
-        return remove(obj);
+        remove(obj);
     }
 }

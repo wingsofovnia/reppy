@@ -22,6 +22,8 @@
         <maven.compiler.testSource>${project.build.jdk.ver}</maven.compiler.testSource>
 
         <dep.hibernate.api.persistence.ver>1.0.0.Final</dep.hibernate.api.persistence.ver>
+        <dep.testing.mockito.core.ver>1.10.19</dep.testing.mockito.core.ver>
+        <testing.junit.ver>4.12</testing.junit.ver>
     </properties>
 
     <licenses>
@@ -70,6 +72,18 @@
                 <artifactId>hibernate-jpa-2.1-api</artifactId>
                 <version>${dep.hibernate.api.persistence.ver}</version>
             </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${testing.junit.ver}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${dep.testing.mockito.core.ver}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -77,4 +91,19 @@
         <module>reppy-core</module>
         <module>reppy-jpa</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

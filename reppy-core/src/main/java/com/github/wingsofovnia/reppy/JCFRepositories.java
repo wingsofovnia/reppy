@@ -94,8 +94,9 @@ public class JCFRepositories {
         }
     }
 
-    private static class ListSequenceRepository<T> extends CollectionRepository<T> implements
-            SequenceRepository<T, Integer> {
+    private static class ListSequenceRepository<T> extends CollectionRepository<T>
+            implements SequenceRepository<T, Integer> {
+
         ListSequenceRepository(List<T> list) {
             super(list);
         }
@@ -116,9 +117,8 @@ public class JCFRepositories {
         }
 
         @Override
-        public boolean remove(Integer index) {
+        public void remove(Integer index) {
             ((List<T>) collection).remove((int) index);
-            return true;
         }
     }
 }

@@ -13,7 +13,7 @@ public interface SequenceRepository<T, ID extends Serializable> extends Reposito
 
     Stream<T> getAll(Specification<T> specification);
 
-    boolean remove(ID index);
+    void remove(ID index);
 
     @Override
     default Spliterator<T> spliterator() {
