@@ -10,4 +10,4 @@ notifications:
     on_failure: change
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t 1cae963b-25a3-4eb6-9672-06d8b0c07bd7
