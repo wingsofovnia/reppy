@@ -26,6 +26,8 @@
         <dev.hibernate.entitymanager>4.3.5.Final</dev.hibernate.entitymanager>
         <dep.testing.junit.ver>4.12</dep.testing.junit.ver>
         <dep.testing.h2database.ver>1.4.192</dep.testing.h2database.ver>
+
+        <plg.testing.cov.jacoco.ver>0.7.7.201606060606</plg.testing.cov.jacoco.ver>
     </properties>
 
     <licenses>
@@ -118,7 +120,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.7.201606060606</version>
+                <version>${plg.testing.cov.jacoco.ver}</version>
                 <executions>
                     <execution>
                         <id>jacoco-initialize</id>
