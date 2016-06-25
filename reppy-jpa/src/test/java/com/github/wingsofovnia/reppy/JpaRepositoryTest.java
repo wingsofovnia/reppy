@@ -21,47 +21,13 @@ import java.util.logging.Level;
 
 import static org.junit.Assert.*;
 
-public class JpaRepositoryTest {
+public class JpaRepositoryTest extends JpaTest {
     private static EntityManagerFactory entityManagerFactory;
     private static JpaRepository<Entity> repository;
 
-    @javax.persistence.Entity
-    public static class Entity {
-        @Id
-        private int x;
-        private String s;
-
-        public Entity() {}
-
-        public Entity(int x, String s) {this.x = x;this.s = s;}
-        public Entity(int x) {this.x = x;}
-        public int getX() {return x;}
-        public void setX(int x) {this.x = x;}
-        public String getS() {return s;}
-        public void setS(String s) {this.s = s;}
-        public String toString() {return "Val{" + "x=" + x + ", s='" + s + '\'' + '}';}
-    }
-
     @BeforeClass
     public static void initEntityManagerFactory() {
-        Configuration configuration = new Configuration();
-        configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:h2:~/test");
-        configuration.setProperty("hibernate.connection.pool_size", "1");
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.cache.internal.NoCachingRegionFactory");
-        configuration.setProperty("hibernate.hbm2ddl.auto", "create");
-        configuration.setProperty("hibernate.connection.autocommit", "false");
-        configuration.addAnnotatedClass(Entity.class);
-
-        java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
-
-        StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
-        serviceRegistryBuilder.applySettings(configuration.getProperties());
-        ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
-
-        entityManagerFactory = new EntityManagerFactoryImpl(PersistenceUnitTransactionType.RESOURCE_LOCAL, true, null,
-                configuration, serviceRegistry, null);
+        entityManagerFactory = buildEntityManagerFactory();
     }
 
     @Before

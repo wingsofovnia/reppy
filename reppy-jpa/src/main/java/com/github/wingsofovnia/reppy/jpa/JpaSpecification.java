@@ -28,12 +28,10 @@ public interface JpaSpecification<T> {
     default JpaSpecification<T> and(JpaSpecification<T> other) {
         Objects.requireNonNull(other, "Other specification must be not null");
 
-        return new JpaSpecification<T>() {
-            public Predicate toPredicate(Root<T> root, CriteriaQuery query, CriteriaBuilder builder) {
-                Predicate otherPredicate = other.toPredicate(root, query, builder);
-                Predicate thisPredicate = this.toPredicate(root, query, builder);
-                return builder.and(thisPredicate, otherPredicate);
-            }
+        return (root, query, builder) -> {
+            Predicate otherPredicate = other.toPredicate(root, query, builder);
+            Predicate thisPredicate = JpaSpecification.this.toPredicate(root, query, builder);
+            return builder.and(thisPredicate, otherPredicate);
         };
     }
 
@@ -43,7 +41,7 @@ public interface JpaSpecification<T> {
         return new JpaSpecification<T>() {
             public Predicate toPredicate(Root<T> root, CriteriaQuery query, CriteriaBuilder builder) {
                 Predicate otherPredicate = other.toPredicate(root, query, builder);
-                Predicate thisPredicate = this.toPredicate(root, query, builder);
+                Predicate thisPredicate = JpaSpecification.this.toPredicate(root, query, builder);
                 return builder.or(thisPredicate, otherPredicate);
             }
         };
@@ -52,7 +50,7 @@ public interface JpaSpecification<T> {
     default JpaSpecification<T> not() {
         return new JpaSpecification<T>() {
             public Predicate toPredicate(Root<T> root, CriteriaQuery query, CriteriaBuilder builder) {
-                Predicate thisPredicate = this.toPredicate(root, query, builder);
+                Predicate thisPredicate = JpaSpecification.this.toPredicate(root, query, builder);
                 return builder.not(thisPredicate);
             }
         };

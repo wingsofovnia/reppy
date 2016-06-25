@@ -42,10 +42,6 @@ public class JpaSequenceRepository<T, ID extends Serializable> extends JpaReposi
         return Optional.ofNullable(entityManager.find(entityClass, index));
     }
 
-    public Optional<T> get(JpaSpecification<T> specification) {
-        return getAll(specification).findFirst();
-    }
-
     @Override
     public Stream<T> getAll() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -55,7 +51,7 @@ public class JpaSequenceRepository<T, ID extends Serializable> extends JpaReposi
         return entityManager.createQuery(criteriaQuery.select(root)).getResultList().stream();
     }
 
-    public Stream<T> getAll(JpaSpecification<T> specification) {
+    public Stream<T> get(JpaSpecification<T> specification) {
         Objects.requireNonNull(specification, "Cannot retrieve object by null specification");
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
