@@ -1,5 +1,5 @@
 # Reppy <img src="https://travis-ci.org/wingsofovnia/reppy.svg?branch=develop"> <img src="https://codecov.io/gh/wingsofovnia/reppy/branch/develop/graph/badge.svg" alt="Codecov" />
-Reppy is a simple repository pattern implementation.
+Reppy aims to reach simple and pure implementation of [Repository pattern](https://thinkinginobjects.com/2012/08/26/dont-use-dao-use-repository/). It based on 2 interfaces `Repository` and `SequenceRepository`, which mimic `java.util.Collection` and `java.util.List`respectively. As of today, the only implementation of Reppy's API is `reppy-jpa` with JPA. `Reppy-jpa` also implements Specifications pattern for building queries in more convenient way.
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/wingsofovnia/reppy/issues).
