@@ -1,5 +1,6 @@
 package com.github.wingsofovnia.reppy;
 
+import com.github.wingsofovnia.reppy.jpa.JpaRepository;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.jpa.internal.EntityManagerFactoryImpl;

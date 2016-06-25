@@ -1,8 +1,23 @@
-package com.github.wingsofovnia.reppy;
+/*
+ * (C) Copyright 2016 Reppy
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.wingsofovnia.reppy.jpa;
 
 import com.github.wingsofovnia.reppy.api.RepositoryException;
 import com.github.wingsofovnia.reppy.api.SequenceRepository;
-import com.github.wingsofovnia.reppy.api.Specification;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,8 +42,7 @@ public class JpaSequenceRepository<T, ID extends Serializable> extends JpaReposi
         return Optional.ofNullable(entityManager.find(entityClass, index));
     }
 
-    @Override
-    public Optional<T> get(Specification<T> specification) {
+    public Optional<T> get(JpaSpecification<T> specification) {
         return getAll(specification).findFirst();
     }
 
@@ -41,8 +55,7 @@ public class JpaSequenceRepository<T, ID extends Serializable> extends JpaReposi
         return entityManager.createQuery(criteriaQuery.select(root)).getResultList().stream();
     }
 
-    @Override
-    public Stream<T> getAll(Specification<T> specification) {
+    public Stream<T> getAll(JpaSpecification<T> specification) {
         Objects.requireNonNull(specification, "Cannot retrieve object by null specification");
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

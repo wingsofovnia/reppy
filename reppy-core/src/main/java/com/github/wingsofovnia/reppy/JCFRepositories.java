@@ -2,8 +2,6 @@ package com.github.wingsofovnia.reppy;
 
 import com.github.wingsofovnia.reppy.api.Repository;
 import com.github.wingsofovnia.reppy.api.SequenceRepository;
-import com.github.wingsofovnia.reppy.api.Specification;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -102,18 +100,8 @@ public class JCFRepositories {
         }
 
         @Override
-        public Optional<T> get(Specification<T> specification) {
-            throw new NotImplementedException();
-        }
-
-        @Override
         public Stream<T> getAll() {
             return collection.stream();
-        }
-
-        @Override
-        public Stream<T> getAll(Specification<T> specification) {
-            throw new NotImplementedException();
         }
 
         @Override
